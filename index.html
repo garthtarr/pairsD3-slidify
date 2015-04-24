@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pairsD3</title>
+  <meta charset="utf-8">
+  <meta name="description" content="pairsD3">
+  <meta name="author" content="Garth Tarr">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/gh-buttons.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/ioslides.css" media="all" >
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides>
+    
+    <!-- LOGO SLIDE 
+    -->    <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>pairsD3</h1>
+    <h2>Interactive pairs plots</h2>
+    <p>Garth Tarr<br/></p>
+  </hgroup>
+  <article></article>  
+  <header class = 'social'>
+    <p></p><a href="https://twitter.com/garthtarr"><i class="fa fa-twitter"></i> @garthtarr</a><br/><br/>
+    <p></p><a href="https://github.com/garthtarr"><i class="fa fa-github"></i> garthtarr</a>
+  </header>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Traditional pairs plots</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">pairs(iris,col=iris[,5])
+</code></pre>
+
+<p><img src="assets/fig/trad-pairs-1.png" alt="plot of chunk trad-pairs"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+  <div class='edit-button button-group'>
+    <!-- <a href="http://prose.io/#//edit/gh-pages/lectures//index.Rmd" class="button icon edit">Edit</a> 
+    <a href='http://.github.io/' class="button icon home" target="_self">Home</a>  -->
+  </div>
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>A better way with the power of D3</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="pD3.html" style="overflow:hidden;height:650px;width:1500px"> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+  <div class='edit-button button-group'>
+    <!-- <a href="http://prose.io/#//edit/gh-pages/lectures//index.Rmd" class="button icon edit">Edit</a> 
+    <a href='http://.github.io/' class="button icon home" target="_self">Home</a>  -->
+  </div>
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Comparison</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><strong><code>pairs()</code></strong></p>
+
+<ul>
+<li>static image (non-interactive)</li>
+<li>can&#39;t easily identify observations </li>
+<li>can&#39;t highlight selected observations</li>
+<li>doesn&#39;t interact with Shiny</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><strong><code>pairsD3()</code></strong></p>
+
+<ul>
+<li>interactivity powered by D3</li>
+<li>identifying observations is easy with tooltips</li>
+<li>highlight selected of observations across all variables</li>
+<li>interacts with Shiny by sending the selected observations back to the server (e.g. can display them in a data table or perform analysis on a subset of observations)</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <div class='edit-button button-group'>
+    <!-- <a href="http://prose.io/#//edit/gh-pages/lectures//index.Rmd" class="button icon edit">Edit</a> 
+    <a href='http://.github.io/' class="button icon home" target="_self">Home</a>  -->
+  </div>
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Get it on Github <i class="fa fa-github"></i></h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;garthtarr/pairsD3&quot;)
+require(pairsD3)
+</code></pre>
+
+<h3>Main functions</h3>
+
+<pre><code class="r">pairsD3(iris[,1:4],group=iris[,5])
+</code></pre>
+
+<h3>Shiny interface</h3>
+
+<pre><code class="r">shinypairs(iris)
+</code></pre>
+
+<h3>Check it out the preview on shinyapps.io</h3>
+
+<p><a href="https://garthtarr.shinyapps.io/pairsD3-shiny">https://garthtarr.shinyapps.io/pairsD3-shiny</a></p>
+
+<h3>Contribute: <a href = "https://github.com/garthtarr/pairsD3"><i class="fa fa-github"></i>/garthtarr/pairsD3</a></h3>
+
+<p><a href="https://twitter.com/garthtarr"><i class="fa fa-twitter"></i> @garthtarr</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  <div class='edit-button button-group'>
+    <!-- <a href="http://prose.io/#//edit/gh-pages/lectures//index.Rmd" class="button icon edit">Edit</a> 
+    <a href='http://.github.io/' class="button icon home" target="_self">Home</a>  -->
+  </div>
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Traditional pairs plots'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='A better way with the power of D3'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Comparison'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Get it on Github <i class="fa fa-github"></i>'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
